@@ -1,0 +1,30 @@
+{
+  "name": "HEIC to JPG — runlocally",
+  "short_name": "HEIC to JPG",
+  "description": "Convert HEIC/HEIF photos to JPG or PNG in your browser. Nothing is uploaded. Works offline.",
+  "start_url": "/heic-to-jpg/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "scope": "/heic-to-jpg/",
+  "icons": [
+    {
+      "src": "/heic-to-jpg/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/heic-to-jpg/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["photo", "utilities", "productivity"],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}

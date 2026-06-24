@@ -1,0 +1,19 @@
+# robots.txt — runlocally / heic-to-jpg
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Backlink scrapers (noise, not search engines)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Interim: apex は当ツールが占有中。router 導入後は /sitemap.xml(index) に差し替える。
+Sitemap: https://runlocally.app/sitemap.xml

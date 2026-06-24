@@ -1,0 +1,14 @@
+[
+  {
+    "url": "http://localhost:4321/heic-to-jpg/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/Users/dai/Documents/cloudflare/runlocally/tools/heic-to-jpg/.lighthouseci/localhost-_heic_to_jpg_-2026_06_23_16_10_14.report.html",
+    "jsonPath": "/Users/dai/Documents/cloudflare/runlocally/tools/heic-to-jpg/.lighthouseci/localhost-_heic_to_jpg_-2026_06_23_16_10_14.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 0.98,
+      "best-practices": 1,
+      "seo": 1
+    }
+  }
+]
