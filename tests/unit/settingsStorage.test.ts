@@ -17,14 +17,14 @@ describe('settingsStorage', () => {
   });
 
   it('merges a stored partial over the defaults', () => {
-    localStorage.setItem('heic-converter-settings', JSON.stringify({ outputFormat: 'png' }));
+    localStorage.setItem('heic-to-jpg-settings', JSON.stringify({ outputFormat: 'png' }));
     const loaded = loadSettings();
     expect(loaded.outputFormat).toBe('png');
     expect(loaded.maxWidth).toBe(DEFAULT_SETTINGS.maxWidth);
   });
 
   it('falls back to the defaults on malformed JSON', () => {
-    localStorage.setItem('heic-converter-settings', '{not valid json');
+    localStorage.setItem('heic-to-jpg-settings', '{not valid json');
     expect(loadSettings()).toEqual(DEFAULT_SETTINGS);
   });
 });
