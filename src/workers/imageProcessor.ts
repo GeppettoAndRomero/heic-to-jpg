@@ -132,13 +132,37 @@ async function processConversion(request: WorkerRequest): Promise<void> {
 }
 
 /**
+ * libheif を「外部 .wasm」構成でロードする。
+ * `?url` で Vite に libheif.wasm を独立アセットとして出力させ、その bytes を
+ * `wasmBinary` で emscripten ファクトリに渡す（インライン base64 を避ける＝
+ * HANDBOOK §9.3 / LICENSE-AUDIT R8）。`{ wasmBinary }` 指定時は同期インスタンス化
+ * されるため、返ってきたモジュールはそのまま `HeifDecoder` を持つ。
+ * worker 内で一度だけ初期化（memoize）。
+ */
+let libheifPromise: Promise<{ HeifDecoder: new () => import('libheif-js').HeifDecoder }> | null =
+  null;
+function loadLibheif() {
+  if (!libheifPromise) {
+    libheifPromise = (async () => {
+      const [{ default: wasmUrl }, { default: factory }] = await Promise.all([
+        import('libheif-js/libheif-wasm/libheif.wasm?url'),
+        import('libheif-js/libheif-wasm/libheif.js'),
+      ]);
+      const wasmBinary = await (await fetch(wasmUrl)).arrayBuffer();
+      return factory({ wasmBinary });
+    })();
+  }
+  return libheifPromise;
+}
+
+/**
  * HEIC/HEIF を libheif-js でデコードして ImageData を返す。
  * libheif はデコード時に向き変換（irot / imir）を既定で適用するため、
  * EXIF orientation 付きの写真も正しい向きで返る。
  * 注: マルチフレーム HEIC は先頭フレームのみ変換する。
  */
 async function decodeHeic(file: File, settings: ConversionSettings): Promise<ImageData> {
-  const libheif = await import('libheif-js');
+  const libheif = await loadLibheif();
   const buffer = await file.arrayBuffer();
   const decoder = new libheif.HeifDecoder();
   const images = decoder.decode(buffer);
