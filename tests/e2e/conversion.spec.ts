@@ -37,7 +37,7 @@ async function convertAndAssert(page: Page, forceFallback: boolean) {
 
   await page.goto('/heic-to-jpg/');
   // Wait until the island has hydrated and the conversion subsystem is ready.
-  await page.waitForFunction(() => (window as Record<string, unknown>).__heicReady === true);
+  await page.waitForFunction(() => (window as Record<string, unknown>).__toolReady === true);
 
   const downloadPromise = page.waitForEvent('download', { timeout: 30_000 });
   // Feed the real HEIC through the same path the drop zone uses.
