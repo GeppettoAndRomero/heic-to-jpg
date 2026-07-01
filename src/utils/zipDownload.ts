@@ -66,7 +66,8 @@ export async function downloadAsZip(
   });
 
   if (validJobs.length === 0) {
-    throw new Error('ダウンロード可能なファイルがありません');
+    // 開発者向け内部メッセージ。ユーザー表示は呼び出し側でロケール別文言に差し替える。
+    throw new Error('No downloadable files');
   }
 
   // ZIPファイルを作成
@@ -105,7 +106,8 @@ export async function downloadAsZip(
     URL.revokeObjectURL(url);
   } catch (error) {
     console.error('ZIP creation failed:', error);
-    throw new Error('ZIPファイルの作成に失敗しました');
+    // 開発者向け内部メッセージ。ユーザー表示は呼び出し側でロケール別文言に差し替える。
+    throw new Error('ZIP creation failed');
   }
 }
 
@@ -114,7 +116,8 @@ export async function downloadAsZip(
  */
 export function downloadSingleFile(job: ConversionJob): void {
   if (!job.result) {
-    throw new Error('ダウンロード可能なファイルがありません');
+    // 開発者向け内部メッセージ。ユーザー表示は呼び出し側でロケール別文言に差し替える。
+    throw new Error('No downloadable files');
   }
 
   const url = URL.createObjectURL(job.result);
