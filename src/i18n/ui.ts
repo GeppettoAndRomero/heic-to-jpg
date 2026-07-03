@@ -35,6 +35,8 @@ export const ui = {
     errUnsupported:
       'Unsupported file type ({name}). Only HEIC/HEIF files can be converted.',
     errConversionFailed: 'Conversion failed',
+    errNoImageInHeic: 'No image was found in this HEIC/HEIF file.',
+    errWorkerStopped: 'Processing stopped. Please reload the page and try again.',
     errDownloadFailed: 'Download failed',
 
     // SettingsPanel
@@ -108,6 +110,8 @@ export const ui = {
     errUnsupported:
       '対応していない形式です（{name}）。HEIC / HEIF ファイルのみ変換できます。',
     errConversionFailed: '変換に失敗しました',
+    errNoImageInHeic: 'この HEIC/HEIF ファイルに画像が見つかりませんでした。',
+    errWorkerStopped: '処理が停止しました。ページを再読み込みして、もう一度お試しください。',
     errDownloadFailed: 'ダウンロードに失敗しました',
 
     // SettingsPanel
@@ -179,6 +183,8 @@ export const ui = {
     conversionSettings: '转换设置',
     errUnsupported: '不支持的文件类型（{name}）。只能转换 HEIC / HEIF 文件。',
     errConversionFailed: '转换失败',
+    errNoImageInHeic: '此 HEIC/HEIF 文件中未找到图像。',
+    errWorkerStopped: '处理已停止。请重新加载页面后再试。',
     errDownloadFailed: '下载失败',
 
     // SettingsPanel
@@ -252,6 +258,8 @@ export const ui = {
     errUnsupported:
       'Nicht unterstützter Dateityp ({name}). Nur HEIC-/HEIF-Dateien können umgewandelt werden.',
     errConversionFailed: 'Umwandlung fehlgeschlagen',
+    errNoImageInHeic: 'In dieser HEIC/HEIF-Datei wurde kein Bild gefunden.',
+    errWorkerStopped: 'Die Verarbeitung wurde gestoppt. Bitte lade die Seite neu und versuche es erneut.',
     errDownloadFailed: 'Download fehlgeschlagen',
 
     // SettingsPanel
@@ -323,6 +331,8 @@ export const ui = {
     conversionSettings: 'Ajustes de conversión',
     errUnsupported: 'Tipo de archivo no compatible ({name}). Solo se pueden convertir archivos HEIC/HEIF.',
     errConversionFailed: 'La conversión falló',
+    errNoImageInHeic: 'No se encontró ninguna imagen en este archivo HEIC/HEIF.',
+    errWorkerStopped: 'El procesamiento se detuvo. Vuelve a cargar la página e inténtalo de nuevo.',
     errDownloadFailed: 'La descarga falló',
 
     // SettingsPanel
