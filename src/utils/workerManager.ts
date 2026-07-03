@@ -186,7 +186,7 @@ export class WorkerManager {
       for (const [, job] of this.jobs) {
         if (job.status === 'processing' || job.status === 'pending') {
           job.status = 'failed';
-          job.error = 'Workerが停止しました。ページを再読み込みしてください。';
+          job.error = 'errWorkerStopped';
           this.onJobUpdate?.(job);
         }
       }

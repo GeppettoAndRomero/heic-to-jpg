@@ -17,6 +17,7 @@ import type {
   ProcessingPhase,
 } from './types';
 import type { ConversionSettings } from '@/utils/settings';
+import { AppError } from '@/utils/appError';
 import { renderToBlob, generateFileName, type CanvasEnv } from './imagePipeline';
 
 // Worker 内のグローバルコンテキスト
@@ -168,7 +169,7 @@ async function decodeHeic(file: File, settings: ConversionSettings): Promise<Ima
   const images = decoder.decode(buffer);
 
   if (!images || images.length === 0) {
-    throw new Error('No image found in HEIC/HEIF file');
+    throw new AppError('errNoImageInHeic');
   }
 
   const image = images[0];

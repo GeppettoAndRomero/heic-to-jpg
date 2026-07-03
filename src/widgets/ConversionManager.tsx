@@ -11,6 +11,7 @@ import { AppModal } from './AppModal';
 import { ToastNotification } from './ToastNotification';
 import { ErrorToast } from './ErrorToast';
 import { WorkerManager } from '@/utils/workerManager';
+import { resolveErrorMessage } from '@/utils/appError';
 import { type ConversionSettings } from '@/utils/settings';
 import { loadSettings, saveSettings } from '@/utils/settingsStorage';
 import { downloadSingleFile } from '@/utils/zipDownload';
@@ -129,10 +130,10 @@ export function ConversionManager({ locale = 'en' }: ConversionManagerProps) {
     jobs.forEach((job) => {
       if (job.status === 'failed' && !erroredJobIdsRef.current.has(job.id)) {
         erroredJobIdsRef.current.add(job.id);
-        showErrorToast(`${job.file.name}: ${job.error ?? t.errConversionFailed}`);
+        showErrorToast(`${job.file.name}: ${resolveErrorMessage(job.error, t)}`);
       }
     });
-  }, [jobs, showErrorToast]);
+  }, [jobs, showErrorToast, t]);
 
   // 設定変更時に自動保存
   useEffect(() => {
@@ -155,13 +156,13 @@ export function ConversionManager({ locale = 'en' }: ConversionManagerProps) {
         workerManagerRef.current?.addJob(file, settings);
       } catch (error) {
         // HEIC変換エラーの場合はエラートーストを表示
-        showErrorToast(`${file.name}: ${error instanceof Error ? error.message : t.errConversionFailed}`);
+        showErrorToast(`${file.name}: ${resolveErrorMessage(error, t)}`);
       }
     }
 
     // 処理完了を通知（GlobalDropZoneに）
     window.dispatchEvent(new CustomEvent('filesProcessed'));
-  }, [settings, showErrorToast]);
+  }, [settings, showErrorToast, t]);
 
   // グローバルドロップゾーンからのファイルドロップを受信
   useEffect(() => {
