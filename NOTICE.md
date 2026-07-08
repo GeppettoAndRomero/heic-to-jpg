@@ -31,7 +31,8 @@ Works).
 
 The full text of the GNU **LGPL-3.0** and **GPL-3.0** is available at
 <https://www.gnu.org/licenses/lgpl-3.0.html> and <https://www.gnu.org/licenses/gpl-3.0.html>,
-and is included within the `libheif-js` package.
+is included within the `libheif-js` package, and is also bundled in this repository
+as [`COPYING.LESSER`](./COPYING.LESSER) and [`COPYING`](./COPYING) per LGPL-3.0 §4(b).
 
 > Note on packaging: this build currently inlines the libheif WebAssembly module
 > (base64) into the JavaScript bundle rather than shipping it as a separate `.wasm`
