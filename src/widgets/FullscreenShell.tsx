@@ -1,8 +1,8 @@
 /**
  * FullscreenShell — the canonical position:fixed takeover overlay for
- * wide/tall-content viewers and editors (csv-viewer's original pattern,
- * later matched by edit-ascii-diagram; this widget is their converged
- * primitive, canonicalized in #116).
+ * wide/tall-content viewers and editors. Two tools independently grew this
+ * pattern (a table viewer and a canvas editor) before it was converged into
+ * this single primitive; see issue #116 for the history.
  *
  * A central `<main class="container">` column (~440px) is too narrow for
  * wide tables, canvases, and side-by-side panes, and standalone-PWA mode
@@ -24,8 +24,8 @@
  * handler. Microtask checkpoints can run between the listeners of a single
  * event dispatch, so a bubble-phase listener here could observe stale state
  * and mis-route the same keypress. Capture phase always runs first, before
- * any state update from this event has flushed. (Confirmed bug seen in
- * edit-ascii-diagram before this was made a primitive — see #116 D3.)
+ * any state update from this event has flushed. (Confirmed bug seen in the
+ * canvas editor that motivated this primitive — see #116 D3.)
  */
 
 import { useEffect, useRef } from 'preact/hooks';

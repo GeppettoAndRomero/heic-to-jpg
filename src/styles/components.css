@@ -509,8 +509,8 @@
    wide/tall-content viewers and editors (#116). Escapes both the ~440px
    `.container` column and the standalone-PWA `body { max-width: 500px }`
    cap in base.css, because it's viewport-relative, not a descendant of
-   either. Converged from csv-viewer's `.csv-viewer-fs` and
-   edit-ascii-diagram's inline `.ascii-fs` — see src/widgets/FullscreenShell.tsx. */
+   either. Converged from two tools' independently-grown overlay CSS — see
+   src/widgets/FullscreenShell.tsx. */
 .fullscreen-shell {
   position: fixed;
   inset: 0;
