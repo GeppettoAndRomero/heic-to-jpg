@@ -7,24 +7,6 @@ test.describe('covenants', () => {
     test.skip(testInfo.project.name !== 'chromium', 'service-worker dependent (chromium only)');
   });
 
-  test('PWA: manifest is linked and valid, service worker registers (#3)', async ({ page }) => {
-    await page.goto('/heic-to-jpg/');
-    const href = await page.getAttribute('link[rel=manifest]', 'href');
-    expect(href).toBeTruthy();
-    const manifest = await page.evaluate(async (h) => (await fetch(h as string)).json(), href);
-    expect(manifest.name).toBeTruthy();
-    expect(manifest.start_url).toBeTruthy();
-    expect(manifest.display).toBe('standalone');
-    expect(Array.isArray(manifest.icons) && manifest.icons.length > 0).toBe(true);
-    await page.waitForFunction(() => navigator.serviceWorker?.controller != null, { timeout: 15_000 });
-  });
-
-  test('footer links to SECURITY.md (#4)', async ({ page }) => {
-    await page.goto('/heic-to-jpg/');
-    const link = page.locator('footer a').filter({ hasText: 'Security' });
-    await expect(link).toHaveAttribute('href', /SECURITY\.md$/);
-  });
-
   test('links to related tools and its own engineering-notes article (#177)', async ({ page }) => {
     await page.goto('/heic-to-jpg/');
     const cards = page.locator('.related-tools-grid a.related-tool-card');
@@ -41,6 +23,24 @@ test.describe('covenants', () => {
     if (await blogLink.count()) {
       await expect(blogLink).toHaveAttribute('href', /^https:\/\/runlocally\.app\/blog\/heic-to-jpg\/$/);
     }
+  });
+
+  test('PWA: manifest is linked and valid, service worker registers (#3)', async ({ page }) => {
+    await page.goto('/heic-to-jpg/');
+    const href = await page.getAttribute('link[rel=manifest]', 'href');
+    expect(href).toBeTruthy();
+    const manifest = await page.evaluate(async (h) => (await fetch(h as string)).json(), href);
+    expect(manifest.name).toBeTruthy();
+    expect(manifest.start_url).toBeTruthy();
+    expect(manifest.display).toBe('standalone');
+    expect(Array.isArray(manifest.icons) && manifest.icons.length > 0).toBe(true);
+    await page.waitForFunction(() => navigator.serviceWorker?.controller != null, { timeout: 15_000 });
+  });
+
+  test('footer links to SECURITY.md (#4)', async ({ page }) => {
+    await page.goto('/heic-to-jpg/');
+    const link = page.locator('footer a').filter({ hasText: 'Security' });
+    await expect(link).toHaveAttribute('href', /SECURITY\.md$/);
   });
 
   test('keeps no input data in the page URL after conversion (#7)', async ({ page }) => {
