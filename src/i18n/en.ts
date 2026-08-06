@@ -4,12 +4,12 @@ export const en: ToolContent = {
   htmlLang: 'en',
 
   meta: {
-    title: 'HEIC to JPG — Convert in Your Browser, No Upload | runlocally',
+    title: 'HEIC to JPG — Convert Offline, Without Uploading | runlocally',
     description:
-      'Convert HEIC and HEIF photos to JPG or PNG directly in your browser. Files are processed on your device and never uploaded. Open source, works offline.',
-    ogTitle: 'HEIC to JPG — Convert in Your Browser, No Upload',
+      'Convert HEIC and HEIF photos to JPG or PNG without uploading them anywhere — everything runs in your browser and works offline. An adjustable quality setting means you can convert without losing quality. Open source.',
+    ogTitle: 'HEIC to JPG — Convert Offline, Without Uploading',
     ogDescription:
-      'Convert HEIC/HEIF photos to JPG or PNG in your browser. Nothing is uploaded. Open source, works offline.',
+      'Convert HEIC/HEIF photos to JPG or PNG in your browser, without uploading them — works offline. Open source.',
   },
 
   hero: {
@@ -22,7 +22,7 @@ export const en: ToolContent = {
     h2: 'HEIC to JPG, in your browser',
     paras: [
       'This tool converts HEIC and HEIF photos — the format iPhones and iPads use — to JPG or PNG. Windows PCs, Android devices and many websites cannot open HEIC directly, so a conversion to a widely supported format is often needed.',
-      'Decoding runs in the browser with WebAssembly, so it also works where the browser has no native HEIC support (Chrome, Edge and Firefox on Windows and Android).',
+      'Decoding runs in the browser with WebAssembly, so it also works where the browser has no native HEIC support (Chrome, Edge and Firefox on Windows and Android) — and because nothing is uploaded, conversion keeps working fully offline once the page has loaded.',
     ],
   },
 
@@ -72,8 +72,8 @@ export const en: ToolContent = {
       a: 'Yes. Decoding is done with WebAssembly (libheif), so it works in Chrome, Edge and Firefox on Windows even though those browsers cannot open HEIC natively.',
     },
     {
-      q: 'Does converting reduce quality?',
-      a: 'JPG output uses an adjustable quality setting (default 92%), which is visually close to the original for most photos. PNG output is lossless from the decoded image.',
+      q: 'Can I convert HEIC to JPG without losing quality?',
+      a: 'JPG output uses an adjustable quality setting (default 92%), which is visually close to the original for most photos — raise it further if you want to convert without losing quality. PNG output is lossless from the decoded image, so it loses none.',
     },
     {
       q: 'Does it work offline?',
